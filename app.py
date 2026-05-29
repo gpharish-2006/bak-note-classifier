@@ -10,8 +10,8 @@ class BankNote(BaseModel):
 
 
 app = FastAPI()
-pkl_in = open('bankAuthClassifier.pkl','rb')
-model = pickle.load(pkl_in)
+with open('bankAuthClassifier.pkl', 'rb') as pkl_in:
+    model = pickle.load(pkl_in)
 
 @app.post('/predict')
 def predictor(data:BankNote):
